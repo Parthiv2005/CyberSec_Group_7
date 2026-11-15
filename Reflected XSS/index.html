@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><!--TITLE--> | Reflected XSS lab</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
+</head>
+
+<body>
+  <main class="card">
+    <p class="eyebrow">WEB SECURITY LAB · VARIANT 2</p>
+    <h1>Reflected XSS</h1>
+    <p>Compare how the same search input is handled by the vulnerable and fixed pages.</p>
+    <nav aria-label="Choose a version">
+      <a href="/vulnerable" data-route="/vulnerable">Vulnerable</a>
+      <a href="/fixed" data-route="/fixed">Fixed</a>
+    </nav>
+    <section>
+      <h2><!--TITLE--></h2>
+      <form action="<!--ACTION-->" method="get">
+        <label for="q">Search term</label>
+        <div class="input-row"><input id="q" name="q" required placeholder="Enter a search term"><button
+            type="submit">Search</button></div>
+      </form>
+      <!--RESULT-->
+    </section>
+    <p class="note">For testing on your own machine only.</p>
+  </main>
+</body>
+
+</html>

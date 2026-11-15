@@ -1,0 +1,13 @@
+{
+  "name": "reflected-xss-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local reflected XSS demonstration and mitigation",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

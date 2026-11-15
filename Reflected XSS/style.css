@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 6vh 1rem;
+    background: #eef2fa;
+    color: #18243b;
+    font: 16px/1.55 system-ui, sans-serif;
+}
+
+.card {
+    max-width: 720px;
+    margin: auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px #1c2e501a;
+}
+
+.eyebrow {
+    color: #455ed0;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+}
+
+h1 {
+    margin: .25rem 0;
+    font-size: 2.1rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+}
+
+nav {
+    display: flex;
+    gap: .7rem;
+    margin: 1.5rem 0;
+}
+
+nav a {
+    color: #3349aa;
+    text-decoration: none;
+    padding: .5rem .8rem;
+    border: 1px solid #c9d1ed;
+    border-radius: 7px;
+}
+
+nav a[aria-current="page"] {
+    background: #3349aa;
+    color: white;
+    border-color: #3349aa;
+}
+
+section {
+    padding: 1.2rem;
+    border: 1px solid #e1e6f0;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: .4rem;
+}
+
+.input-row {
+    display: flex;
+    gap: .5rem;
+}
+
+input {
+    min-width: 0;
+    flex: 1;
+    padding: .7rem;
+    border: 1px solid #aebbd4;
+    border-radius: 6px;
+    font: inherit;
+}
+
+button {
+    border: 0;
+    border-radius: 6px;
+    background: #3349aa;
+    color: white;
+    padding: .7rem 1rem;
+    cursor: pointer;
+    font: inherit;
+}
+
+.result {
+    overflow-wrap: anywhere;
+    background: #f1f4fb;
+    padding: .8rem;
+    border-radius: 6px;
+}
+
+.note {
+    font-size: .85rem;
+    color: #647087;
+    margin-bottom: 0;
+}
