@@ -6,7 +6,7 @@
 |---|---|---|---|
 | Parthiv Raju | IIT2024022 | --- | --- |
 | Akshat Parmar | IIT2024077 | --- | --- |
-| Sudhanshu Sah | IIT2024081 | --- | --- |
+| Sudhanshu | IIT2024081 | Cross-Site Scripting (XSS) | Reflected XSS (Variant 2) |
 | Satwik Santosh | IIT2024084 | --- | --- |
 | Asavari Takale | IIT2024086 | SQL Injection | Union based data extraction |
  
