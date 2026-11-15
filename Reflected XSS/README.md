@@ -44,6 +44,6 @@ Only output encoding is implemented. Review your lecture slides for the alternat
 
 | Member name | Roll number | Category | Variant implemented |
 | --- | --- | --- | --- |
-| Fill in your name | Fill in your roll number | XSS | Variant 2: reflected XSS |
+| Sudhanshu | IIT2024081 | XSS | Variant 2: reflected XSS |
 
 Add the other members' actual contributions in the group repository. Understand and adapt your implementation before the individual viva. Record the video and capture screenshots yourself.
