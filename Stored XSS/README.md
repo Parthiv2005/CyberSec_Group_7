@@ -11,7 +11,7 @@ A comment board with two views of the same stored comments. The markup simulatio
 
 Run `python -m http.server 8000 --bind 127.0.0.1` from the repository root and open [the local demo](http://127.0.0.1:8000).
 
-## Video and viva
+## How To
 
 1. Open **Markup simulation**, enter `<strong>Stored comment</strong>`, and click **Save comment**. Reload to show that the bold sample persists.
 2. Open **Protected view**. The same stored comment appears with the tags visible. Capture the screenshot here.
