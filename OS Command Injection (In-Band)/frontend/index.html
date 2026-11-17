@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convertly — Online Image Converter</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- App Wrapper (Pure CSS Flexbox Layout) -->
+  <div class="app-layout">
+    
+    <!-- Branding Header -->
+    <header class="brand-section">
+      <div class="brand-logo-row">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+        </div>
+        <h1 class="brand-name">Convertly</h1>
+      </div>
+      <p class="brand-subtitle">
+        Fast, lightweight online image conversion platform. Convert across PNG, JPG, JPEG, and WebP formats instantly.
+      </p>
+    </header>
+
+    <!-- Main Converter Card (Centered Single Card) -->
+    <main class="main-converter-card">
+      
+      <!-- Drag & Drop Zone -->
+      <div id="drop-zone" class="drop-zone">
+        <input type="file" id="file-input" accept=".png,.jpg,.jpeg,.webp" class="file-input-hidden">
+        <div class="drop-zone-content">
+          <div class="upload-icon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+          </div>
+          <p class="drop-text">Drag & drop your image here, or <span class="browse-link">browse</span></p>
+          <span class="drop-subtext">Supports PNG, JPG, JPEG, WebP (Up to 10MB)</span>
+        </div>
+      </div>
+
+      <!-- Image Preview Area -->
+      <div id="preview-container" class="preview-container hidden">
+        <div class="preview-thumbnail-wrap">
+          <img id="image-preview" src="" alt="Selected image preview">
+        </div>
+        <div class="preview-meta">
+          <span id="preview-filename" class="preview-filename">image.png</span>
+          <span id="preview-filesize" class="preview-filesize">0 KB</span>
+        </div>
+        <button id="remove-file-btn" class="icon-btn" title="Remove file" aria-label="Remove file">✕</button>
+      </div>
+
+      <!-- Output Filename Input Field -->
+      <div class="form-group">
+        <label for="output-filename" class="form-label">
+          Target Output Filename:
+        </label>
+        <input 
+          type="text" 
+          id="output-filename" 
+          class="text-input" 
+          placeholder="e.g. converted.webp" 
+          value="converted.webp"
+        >
+        
+        <!-- Format Presets -->
+        <div class="payload-suggestions">
+          <span class="payload-label">Format presets:</span>
+          <button type="button" class="payload-chip" data-preset="converted.webp">converted.webp</button>
+          <button type="button" class="payload-chip" data-preset="output.jpg">output.jpg</button>
+          <button type="button" class="payload-chip" data-preset="picture.png">picture.png</button>
+        </div>
+      </div>
+
+      <!-- Single Action Button -->
+      <div class="actions-container">
+        <button id="btn-convert" class="btn btn-primary" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"/>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+          </svg>
+          <span>Convert Image</span>
+        </button>
+      </div>
+
+      <!-- Status Indicator -->
+      <div id="status-card" class="status-card status-idle">
+        <div class="status-indicator-dot"></div>
+        <span id="status-text" class="status-text">Ready. Choose an image and click Convert Image.</span>
+      </div>
+
+      <!-- Download Converted File Button -->
+      <div id="download-wrapper" class="download-wrapper hidden">
+        <a id="download-btn" class="btn btn-download" href="#" download>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Download Converted File (<span id="download-filename-label">converted.webp</span>)</span>
+        </a>
+      </div>
+
+      <!-- Realistic Collapsible Diagnostics & Output Accordion -->
+      <details id="details-accordion" class="details-accordion hidden">
+        <summary class="details-summary">
+          <div class="summary-left">
+            <svg class="summary-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+            <span>Conversion Details & Engine Output</span>
+          </div>
+          <span id="details-output-badge" class="details-badge hidden">Output Available</span>
+        </summary>
+        <div class="details-content">
+          <div class="details-meta-row">
+            <div class="diag-item">
+              <span class="diag-label">Engine:</span>
+              <span id="diag-engine" class="diag-val font-mono">ImageMagick CLI</span>
+            </div>
+            <div class="diag-item">
+              <span class="diag-label">Process Exit Code:</span>
+              <span id="diag-status" class="diag-val font-mono">-</span>
+            </div>
+          </div>
+          <div class="diag-block">
+            <span class="diag-label">Command Invocation:</span>
+            <div id="diag-command" class="diag-code-box font-mono">-</div>
+          </div>
+          <div class="diag-block">
+            <span class="diag-label">Standard Output (stdout):</span>
+            <pre id="diag-stdout" class="diag-pre stdout-pre">(empty)</pre>
+          </div>
+          <div class="diag-block">
+            <span class="diag-label">Standard Error (stderr):</span>
+            <pre id="diag-stderr" class="diag-pre stderr-pre">(empty)</pre>
+          </div>
+        </div>
+      </details>
+
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
