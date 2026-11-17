@@ -4,7 +4,7 @@
  
 | Name | Roll No. | Category | Variant |
 |---|---|---|---|
-| Parthiv Raju | IIT2024022 | --- | --- |
+| Parthiv Raju | IIT2024022 | Cross-Site Scripting (XSS) | Stored XSS |
 | Akshat Parmar | IIT2024077 | --- | --- |
 | Sudhanshu | IIT2024081 | Cross-Site Scripting (XSS) | Reflected XSS (Variant 2) |
 | Satwik Santosh | IIT2024084 | Cross Site Request Forgery (CSRF) | V1: Forged GET |
